@@ -51,13 +51,13 @@ running = False
 mini = 10e20
 while not done:
     Generations += 1
-    print Generations
+    print(Generations)
     if Generations == 100:
         done = True
-    print len(masses)
+    print(len(masses))
     # min 6.05369995797e+17
     mini = min(mini, Calculations.getMinimumDistance(masses))
-    print mini
+    print(mini)
     # Calculations.recursiveCombiner(masses, 0)
         ##    map(combinerList, masses, [masses] * len(masses))
     # for mass in masses:
@@ -85,7 +85,7 @@ while not done:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 running = not running
-                print running
+                print(running)
             elif event.key == pygame.K_UP:
                 zoom /= 1.1
             elif event.key == pygame.K_DOWN:
