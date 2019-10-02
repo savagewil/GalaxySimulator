@@ -10,7 +10,7 @@ import numpy as np
 # import Mass
 # import Vector
 
-screensize = 500
+screensize = 800
 
 # def draw(mass):
 #     mass.draw(zoom, screen, True, screensize, 2e25)
@@ -31,17 +31,17 @@ screensize = 500
 pygame.init()
 pygame.key.set_repeat(50, 10)
 screen = pygame.display.set_mode([screensize, screensize])
-zoom = 1000
+zoom = 1
 count = 1000
 generations = 0
 radius = 1.702931e+21
-radius = 1.702931e+7
-limit = radius * 1000
+# radius = 1.702931e+7
+limit = radius * zoom
 G = -6.67408e-11
-time_step = 10e-1
+time_step = 10e18
 time_step_2 = ((time_step) ** 2) / 2
-display_rate = 1
-time_limit = 100000000
+display_rate = 10
+time_limit = 10000000000
 # Time = 3.154e13
 initialVelocity = 500*2
 
@@ -50,8 +50,8 @@ radius /= 2
 # zoom = radius * 4
 
 masses = (np.random.rand(count, 1)) * (2e25 - 2e24) + 2e24
-positions = np.random.rand(count, 2) * radius
-velocities = (np.random.rand(count, 2) - .05) * initialVelocity
+positions = (np.random.rand(count, 2) - .5) * 2 * radius
+velocities = 0 * (np.random.rand(count, 2) - .05) * initialVelocity
 
 epsilon = 0.0000000001
 
@@ -132,7 +132,7 @@ while generations < time_limit:
     # print(positions[:, 1].shape)
 
     if generations % display_rate == 0:
-        # print("Render")
+        print("Render")
         # print(accelerations[0])
         # print(accelerations[1])
         screen.fill([0, 0, 0])
